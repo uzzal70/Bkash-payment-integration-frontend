@@ -1,0 +1,36 @@
+button {
+  background-color: #054ed64f;
+  text-align: center;
+  border: 1px solid #2b2e334f;
+  outline: none;
+  padding: 5px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+label {
+  border: '1px solid';
+  outline: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 500;
+}
+input {
+  text-align: center;
+  border: 1px solid black;
+  outline: none;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  width: 300px;
+}
+.button {
+  display: flex;
+  justify-content: end;
+}
+.container {
+  max-width: 1200px;
+  margin: auto;
+}
