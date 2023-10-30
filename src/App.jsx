@@ -11,7 +11,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/paywithbkash" element={<PayWithBkash />} />
-          <Route path="/api/payment/:message" element={<Response />} />
+          <Route path="/payment/:message" element={<Response />} />
         </Routes>
       </BrowserRouter>
     </div>
