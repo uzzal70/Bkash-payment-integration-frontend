@@ -4,7 +4,6 @@ import { useLocation, useNavigate } from 'react-router-dom';
 
 const PayWithBkash = () => {
   const location = useLocation();
-  console.log(location);
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
   const [transactionData, setTransactionData] = useState({
@@ -20,18 +19,47 @@ const PayWithBkash = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
-    window.location.href = `https://sandbox.payment.bkash.com/?paymentId=TR0011XXMKKnJ1698561600276&hash=QI_tltcs6gzYhMGl_uGvkBY8900QsSXpd5ULMoVpwX3orPVsWDQD7xbkwypDqtUcNO.m8dwwO)aqv.d0I2rwWlO.8-*IG3xe-xO-1698561600276&mode=0011&apiVersion=v1.2.0-beta`;
-    setTimeout(() => setIsLoading(false), 10000);
-    //todo: reset the value of transaction
-    setTransactionData({
-      ...transactionData,
-      amount: 0,
-    });
-    e.target.reset();
+
+    const url = `http://142.132.249.197/api/payment/pay?amount=${transactionData?.amount}`;
+
+    try {
+      const response = await fetch(url, {
+        method: 'POST',
+        headers: {
+          Accept: '*/*',
+          'Content-Type': 'application/json',
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to make the payment');
+      }
+
+      const responseData = await response.json();
+      console.log(responseData);
+      if (responseData) {
+        e.preventDefault();
+        setIsLoading(true);
+        window.location.href = responseData?.bkashURL;
+        setTimeout(() => setIsLoading(false), 10000);
+        //todo: reset the value of transaction
+        setTransactionData({
+          ...transactionData,
+          amount: 0,
+        });
+        e.target.reset();
+      }
+    } catch (error) {
+      console.error('Error making payment:', error);
+    } finally {
+      e.target.reset();
+      setIsLoading(false);
+    }
   };
+
   return (
     <div
       style={{
