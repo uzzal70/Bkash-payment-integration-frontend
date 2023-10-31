@@ -22,7 +22,7 @@ const PayWithBkash = () => {
     e.preventDefault();
     setIsLoading(true);
 
-    const url = `http://142.132.249.197/api/payment/pay?amount=${transactionData?.amount}`;
+    const url = `https://tripfindy.com/api/payment/pay?amount=${transactionData?.amount}`;
 
     try {
       const response = await fetch(url, {
