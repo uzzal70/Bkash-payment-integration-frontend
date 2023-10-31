@@ -58,9 +58,27 @@ const Home = () => {
   return (
     <div>
       <div>
-        <h1 style={{ textAlign: 'center', marginBottom: '50px' }}>
-          Visa Services
-        </h1>
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+          }}
+        >
+          <h1 style={{ textAlign: 'center', marginBottom: '50px' }}>
+            Visa Services
+          </h1>
+          <button
+            style={{
+              textAlign: 'center',
+              marginBottom: '50px',
+              height: '30px',
+            }}
+            onClick={() => navigate('/refund')}
+          >
+            Payment Refund
+          </button>
+        </div>
         <div
           style={{
             display: 'grid',

@@ -8,7 +8,6 @@ const PayWithBkash = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [transactionData, setTransactionData] = useState({
     amount: '',
-    serviceFee: 1.5,
   });
 
   const handleOnChange = (e) => {

@@ -25,14 +25,14 @@ const Response = () => {
           }}
         >
           <div>
-            <h3>Success</h3>
-            <p>{message}</p>
+            {/* <h3>Success</h3> */}
+            <h3>Payment {message}</h3>
             <div style={{ textAlign: 'end' }}>
               <button
                 style={{ padding: '8px 20px' }}
                 onClick={() => navigate('/')}
               >
-                Ok
+                Payment Complete
               </button>
             </div>
           </div>
